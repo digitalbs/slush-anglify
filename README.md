@@ -1,4 +1,4 @@
-# slush-anglify [![Build Status](https://secure.travis-ci.org/digitalbs/slush-anglify.png?branch=master)](https://travis-ci.org/digitalbs/slush-anglify) [![NPM version](https://badge-me.herokuapp.com/api/npm/slush-anglify.png)](http://badges.enytc.com/for/npm/slush-anglify)
+# slush-anglify 
 
 > Slush generator to scaffold out angular + browserify + gulp apps
 
