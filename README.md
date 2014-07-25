@@ -1,4 +1,4 @@
-# slush-anglify 
+# slush-anglify
 
 > Slush generator to scaffold out angular + browserify + gulp apps
 
