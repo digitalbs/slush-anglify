@@ -5,6 +5,19 @@
 
 ## Getting Started
 
+### Prerequisites
+Install `napa` globally: 
+
+```bash
+$ npm install -g napa
+```
+
+Install `slush` globally:
+
+```bash
+$ npm install -g slush
+```
+
 Install `slush-anglify` globally:
 
 ```bash
