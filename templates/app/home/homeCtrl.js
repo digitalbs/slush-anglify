@@ -1,5 +1,5 @@
-var HomeCtrl = function($scope) {
-    $scope.description = '<%= appDescription %>';
+var HomeCtrl = function() {
+    this.description = '<%= appDescription %>';
 };
 
 module.exports = HomeCtrl;

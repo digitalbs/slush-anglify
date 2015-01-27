@@ -5,6 +5,6 @@ module.exports = function ($urlRouterProvider, $stateProvider) {
         .state('home', {
             url: '/',
             templateUrl: './app/home/home.html',
-            controller: 'HomeCtrl'
+            controller: 'HomeCtrl as home'
         });
 };
