@@ -18,7 +18,7 @@ describe("Controller: HomeCtrl", function () {
     });
     describe("Description", function () {
         it("will set value to <%= appDescription %>", function () {
-            expect(scope.description).toBe('<%= appDescription %>');
+            expect(ctrl.description).toBe('<%= appDescription %>');
         });
 
     });

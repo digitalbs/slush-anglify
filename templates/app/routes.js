@@ -4,7 +4,7 @@ module.exports = function ($urlRouterProvider, $stateProvider) {
     $stateProvider
         .state('home', {
             url: '/',
-            templateUrl: './app/home/home.html',
+            templateUrl: 'app/home/home.html',
             controller: 'HomeCtrl as home'
         });
 };

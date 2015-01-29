@@ -2,15 +2,20 @@ module.exports = function (config) {
     config.set({
         basePath: '',
 
-        frameworks: ['jasmine', 'browserify'],
+        frameworks: ['browserify', 'jasmine'],
 
         files: [
-            './app/**/*.js'
+            './app/**/*Ctrl.js',
+            './app/**/*.test.js'
         ],
+
         preprocessors: {
-            './app/**/*.js': ['browserify', 'coverage']
+            './app/home/*.js': ['browserify'],
+            './app/home/*Ctrl.js': ['coverage']
         },
-        exclude: [],
+        exclude: [
+
+        ],
         reporters: ['progress', 'coverage'],
         coverageReporter: {
             'type': 'text',
