@@ -29,5 +29,4 @@ module.exports = (function() {
    * Setup watch for templates
    */
   gulp.watch('./app/sass/**/*.scss', ['watchStyles']);
-
 })();
