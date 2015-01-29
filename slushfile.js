@@ -6,99 +6,57 @@
  * Licensed under the MIT license.
  */
 
+/**
+ * Require in necessary modules
+ */
+var fs = require('fs'),
+  slushTasks = fs.readdirSync(__dirname + '/slush-tasks');
 
-var gulp = require('gulp'),
-    install = require('gulp-install'),
-    conflict = require('gulp-conflict'),
-    template = require('gulp-template'),
-    rename = require('gulp-rename'),
-    _ = require('underscore.string'),
-    inquirer = require('inquirer');
+/**
+ * Setting globals to use for all slush tasks
+ */
+global.gulp = require('gulp');
+global.install = require('gulp-install');
+global.conflict = require('gulp-conflict');
+global.global.template = require('gulp-template');
+global.rename = require('gulp-rename');
+global._ = require('underscore.string');
+global.inquirer = require('inquirer');
+global.defaults = (function() {
+  var homeDir = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE,
+    workingDirName = process.cwd().split('/').pop().split('\\').pop(),
+    osUserName = homeDir && homeDir.split('/').pop() || 'root',
+    configFile = homeDir + '/.gitconfig',
+    user = {};
 
-function format(string) {
-    var username = string.toLowerCase();
-    return username.replace(/\s/g, '');
-}
+  if (require('fs').existsSync(configFile)) {
+    user = require('iniparser').parseSync(configFile).user;
+  }
 
-var defaults = (function() {
-    var homeDir = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE,
-        workingDirName = process.cwd().split('/').pop().split('\\').pop(),
-        osUserName = homeDir && homeDir.split('/').pop() || 'root',
-        configFile = homeDir + '/.gitconfig',
-        user = {};
-
-    if (require('fs').existsSync(configFile)) {
-        user = require('iniparser').parseSync(configFile).user;
-    }
-
-    return {
-        appName: workingDirName,
-        userName: format(user.name) || osUserName,
-        authorEmail: user.email || ''
-    };
+  return {
+    appName: workingDirName,
+    userName: formatUsername(user.name) || osUserName,
+    authorEmail: user.email || ''
+  };
 })();
 
-gulp.task('default', function(done) {
-    var prompts = [
-        {
-            name: 'appName',
-            message: 'What is the name of your project?',
-            default: defaults.appName
-        },
-        {
-            name: 'appDescription',
-            message: 'What is the description?'
-        },
-        {
-            name: 'appVersion',
-            message: 'What is the version of your project?',
-            default: '0.1.0'
-        },
-        {
-            name: 'authorName',
-            message: 'What is the author name?'
-        },
-        {
-            name: 'authorEmail',
-            message: 'What is the author email?',
-            default: defaults.authorEmail
-        },
-        {
-            name: 'userName',
-            message: 'What is the github username?',
-            default: defaults.userName
-        },
-        {
-            name: 'appGitRepo',
-            message: 'What is the github repo URL',
-            default: 'https://github.com/' + defaults.userName + '/' + defaults.appName
-        },
-        {
-            type: 'confirm',
-            name: 'moveon',
-            message: 'Continue?'
-        }
-    ];
-//Ask
-    inquirer.prompt(prompts,
-        function(answers) {
-            if (!answers.moveon) {
-                return done();
-            }
-            answers.appNameSlug = _.slugify(answers.appName);
-            gulp.src(__dirname + '/templates/**')
-                .pipe(template(answers))
-                .pipe(rename(function(file) {
-                    if (file.basename[0] === '~') {
-                        file.basename = '.' + file.basename.slice(1);
-                    }
-                }))
-                .pipe(conflict('./'))
-                .pipe(gulp.dest('./'))
-                .pipe(install())
-                .on('end', function() {
-                    done();
-                });
-        });
-})
-;
+/**
+ * slush tasks loader. Loops through the files in the slush task directory to load in
+ * @param  {Object} slushTask Slush task in each loop is the file that we read and bring in to require them into the slush file
+ */
+slushTasks.forEach(function(slushTask) {
+  if (slushTask.match(/.*\.js/)) {
+    require('./slush-tasks/' + slushTask);
+  }
+});
+
+//helper methods
+/**
+ * Format the user name used in the github user name
+ * @param  {String} string Github user name
+ * @return {String} retuns the formatted user name
+ */
+function formatUsername(string) {
+  var username = string.toLowerCase();
+  return username.replace(/\s/g, '');
+}

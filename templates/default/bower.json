@@ -1,8 +1,8 @@
 {
-    "name": "Anglify",
-    "version": "0.0.1",
+    "name": "<%= appName %>",
+    "version": "<%= appVersion %>",
     "homepage": "",
-    "authors": ["Brian Schneider"],
+    "authors": ["<%= authorName %>"],
     "license": "MIT",
     "private": false,
     "ignore": [

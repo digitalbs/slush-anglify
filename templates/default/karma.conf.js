@@ -16,7 +16,7 @@ module.exports = function (config) {
         exclude: [
 
         ],
-        reporters: ['progress', 'coverage'],
+        reporters: ['progress'],
         coverageReporter: {
             'type': 'text',
             'dir': 'reports/coverage'
