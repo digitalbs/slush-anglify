@@ -1,6 +1,12 @@
 "use strict";
 
+var clean = require('gulp-clean');
+
 module.exports = (function() {
+    /**
+     * Gulp serve serves up the application. Using browser sync instead of connect.
+     * @return {Object} Returns a browser sync session
+     */
     gulp.task('serve', function() {
         return browserSync({
             notify: false,
@@ -13,8 +19,17 @@ module.exports = (function() {
         });
     });
 
+    /**
+     * Gulp serve-assets moves the necessary assets to run the application locally
+     * Use the gulp distribute task when you want to package up the assets for production
+     */
     gulp.task('serve-assets', function() {
         gulp.src(['./dist/**']).pipe(gulp.dest('./serve/assets'));
         gulp.src(['./index.html']).pipe(gulp.dest('./serve'));
+
+        browserSync.reload({
+            stream: true
+        });
+
     });
 })();

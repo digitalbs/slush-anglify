@@ -1,5 +1,8 @@
 "use strict";
 
+/**
+ * Setting globals to use for all Gulp tasks
+ */
 global.APP_FOLDER = "app";
 global.RELEASE_FOLDER = "dist";
 global.SERVE_FOLDER = "serve";
