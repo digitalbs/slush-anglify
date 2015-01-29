@@ -15,19 +15,9 @@ module.exports = (function() {
       ])
       .pipe(sass())
       .pipe(concat('app.css'))
-      .pipe(gulp.dest('./dist/css'));
+      .pipe(gulp.dest('./dist/css'))
+      .pipe(browserSync.reload({
+        stream: true
+      }));
   });
-
-  /**
-   * Gulp task to watch templates
-   */
-  gulp.task('watchStyles', function(cb) {
-    runSequence(['sass'], 'serve-assets', cb);
-  });
-
-  /*
-   * Setup watch for templates
-   */
-  gulp.watch('./app/sass/**/*.scss', ['watchStyles']);
-
 })();
