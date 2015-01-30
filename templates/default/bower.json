@@ -1,0 +1,23 @@
+{
+    "name": "<%= appName %>",
+    "version": "<%= appVersion %>",
+    "homepage": "",
+    "authors": ["<%= authorName %>"],
+    "license": "MIT",
+    "private": false,
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components",
+        "spec"
+    ],
+    "main": [
+        "dist/js",
+        "dist/css",
+        "dist/images"
+    ],
+    "dependencies": {},
+    "devDependencies": {
+        "bootstrap-sass-official": "~3.2.0"
+    }
+}

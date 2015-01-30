@@ -1,7 +1,7 @@
 {
     "name": "slush-anglify",
     "description": "Slush generator to scaffold out angular + browserify + gulp apps",
-    "version": "0.1.0",
+    "version": "0.1.21",
     "homepage": "https://github.com/digitalbs/slush-anglify",
     "author": {
         "name": "Brian Schneider",
