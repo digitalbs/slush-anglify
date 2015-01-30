@@ -5,18 +5,17 @@
 
 ## Getting Started
 
-### Prerequisites
-Install `napa` globally: 
+Welcome to the Angular and Browserify generator for Slush. Slush-Anglify will scaffold out an Angular application with Browserify. It follows the latest Angular architecture organization standards. Layout follows [BEM + SMACSS](http://webuild.envato.com/blog/how-to-scale-and-maintain-legacy-css-with-sass-and-smacss/). 
 
-```bash
-$ npm install -g napa
-```
+### Prerequisites
+As with any Slush generator, you will need to have **Node** and **Slush** installed globally.
 
 Install `slush` globally:
 
 ```bash
 $ npm install -g slush
 ```
+After you have all the prerequisites installed, install the **Slush-Anglify** generator globally. 
 
 Install `slush-anglify` globally:
 
@@ -29,14 +28,28 @@ $ npm install -g slush-anglify
 Create a new folder for your project:
 
 ```bash
-$ mkdir my-slush-anglify
+$ mkdir my-project
 ```
 
 Run the generator from within the new folder:
 
 ```bash
-$ cd my-slush-anglify && slush anglify
+$ cd my-project 
+$ slush anglify
 ```
+
+There are some basic scaffolding questions to help get your application built out. During the scaffolding process, it will install all node modules and pull down any third-party library dependencies needed for the application with bower. 
+
+Once you are ready to start developing, you can run the application in develop mode with the following gulp task:
+```bash
+$ gulp develop
+```
+
+There is an optional argument to pass with the develop task if you would like to see the coverage of your code:
+```bash
+$ gulp develop --coverage
+```
+
 
 ## Getting To Know Slush
 
