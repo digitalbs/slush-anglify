@@ -56,7 +56,7 @@ slushTasks.forEach(function(slushTask) {
  * @param  {String} string Github user name
  * @return {String} retuns the formatted user name
  */
-function formatUsername(string) {
+function formatUsername(string) { //jshint ignore:line
   var username = string.toLowerCase();
   return username.replace(/\s/g, '');
 }

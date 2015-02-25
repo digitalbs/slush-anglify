@@ -10,8 +10,8 @@ module.exports = function (config) {
         ],
 
         preprocessors: {
-            './app/home/*.js': ['browserify'],
-            './app/home/*Ctrl.js': ['coverage']
+            './app/**/*.js': ['browserify'],
+            './app/**/*Ctrl.js': ['coverage']
         },
         exclude: [
 
